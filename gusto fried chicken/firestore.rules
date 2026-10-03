@@ -1,0 +1,33 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Default Deny All
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Helper functions
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    // Allow connection diagnostic checks
+    match /test/{docId} {
+      allow read: if true;
+      allow write: if false;
+    }
+
+    // Orders Collection: Allow read and write for guest customers and kitchen display
+    match /orders/{orderId} {
+      allow read, write: if true;
+    }
+  }
+}

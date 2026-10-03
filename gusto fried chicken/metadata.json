@@ -1,0 +1,6 @@
+{
+  "name": "GUSTO Fried Chicken",
+  "description": "GUSTO Fried Chicken & Burgers - Order delicious crispy fried chicken, burgers, strips, and fries online with fast delivery and branch pickup.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

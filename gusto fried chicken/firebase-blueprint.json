@@ -1,0 +1,68 @@
+{
+  "entities": {
+    "Order": {
+      "title": "Order",
+      "description": "A food order placed by a customer at GUSTO Fried Chicken",
+      "type": "object",
+      "properties": {
+        "customerName": {
+          "type": "string",
+          "description": "Customer full name"
+        },
+        "phone": {
+          "type": "string",
+          "description": "Customer phone number"
+        },
+        "deliveryMethod": {
+          "type": "string",
+          "description": "Order fulfillment method: delivery or pickup"
+        },
+        "address": {
+          "type": "string",
+          "description": "Delivery address or pickup branch note"
+        },
+        "paymentMethod": {
+          "type": "string",
+          "description": "Payment method: cash or card"
+        },
+        "notes": {
+          "type": "string",
+          "description": "Customer notes or special instructions"
+        },
+        "items": {
+          "type": "array",
+          "description": "List of items in the order with details"
+        },
+        "totalAmount": {
+          "type": "number",
+          "description": "Total order cost in EGP"
+        },
+        "status": {
+          "type": "string",
+          "description": "Current order status (new, preparing, ready, completed, cancelled)"
+        },
+        "createdAt": {
+          "type": "string",
+          "format": "date-time",
+          "description": "Server timestamp when order was created"
+        }
+      },
+      "required": [
+        "customerName",
+        "phone",
+        "deliveryMethod",
+        "paymentMethod",
+        "items",
+        "totalAmount",
+        "status",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Collection of customer orders"
+    }
+  }
+}
